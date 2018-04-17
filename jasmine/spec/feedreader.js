@@ -27,20 +27,48 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
+
+         it('all feeds have an URL that is not empty', function(){
+           for(let feed of allFeeds) {
+             expect(feed.url).toBeDefined();
+             expect(feed.url).not.toBe('');
+           }
+         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
+
+         it('all feeds have an name that is not empty', function(){
+           for(let feed of allFeeds) {
+             expect(feed.name).toBeDefined();
+             expect(feed.name).not.toBe('');
+           }
+         });
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+    describe('The menue', function() {
+        const element = document.querySelector('body');
+
+        it('side-menue is hidden by default', function() {
+          expect(element.classList.contains('menu-hidden')).toBe(true);
+        });
+
+       /* TODO: Write a test that ensures the menu changes
+        * visibility when the menu icon is clicked. This test
+        * should have two expectations: does the menu display when
+        * clicked and does it hide when clicked again.
+        */
+
+        it('side-menue appears on click and hides again on second click', function() {
+          const menuIcon = $('.menu-icon-link');
+
+          menuIcon.click();
+          expect(element.classList.contains('menu-hidden')).toBe(false);
+
+          menuIcon.click();
+          expect(element.classList.contains('menu-hidden')).toBe(true);
+        });
+    });
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
